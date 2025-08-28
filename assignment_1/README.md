@@ -44,8 +44,8 @@ with).
 
 ### Diagram of the Conceptual Pipeline
 ![Conceptual Data Pipeline](./beejan_case_study.drawio.png)
-Please refer to the diagram above for the conceptual data pipeline.
+Please refer to the diagram above for the conceptual data pipeline architecture.
 
-- Click [here](./beejan_case_study.drawio.png) to view the image in full size.
-- Click [here](./mfon_beejan_assignment.pdf) to view the detailed explanation in PDF format.
+- Click [here](./beejan_case_study.drawio.png) to view the pipeline architecture image in full size.
+- Click [here](./mfon_beejan_assignment.pdf) to view the pipeline architecture image in PDF format.
 - Click [here](./Beejan%20Technologies%20Business%20Scenario.pdf) to view the detailed explanation in Word format.
