@@ -43,7 +43,7 @@ with).
 
 
 ### Diagram of the Conceptual Pipeline
-![Conceptual Data Pipeline](Beejan_casestuddy.drawio.png)
+![Conceptual Data Pipeline](./beejan_case_study.drawio.png)
 Please refer to the diagram above for the conceptual data pipeline.
 
 - Click [here](./beejan_case_study.drawio.png) to view the image in full size.
