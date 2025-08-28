@@ -20,3 +20,32 @@ pipeline to solve this problem.
 This conceptual data pipeline will lay the foundation for
 building the actual pipeline. So everything at this stage
 should be about concepts not tools.
+
+**Note:** Because this is an imaginary company, it is fine for you
+to make assumptions, just be clear and communicate any
+assumptions you make.
+
+# Expected Output
+- A diagram of the conceptual pipeline (you can use tools
+like draw.io, lucid.app or anything you are comfortable
+with).
+-  A not more than 2-page written explanation covering:
+    - Design choices
+    - Assumptions/thought process
+    - Challenges or unknowns
+    - Any other information
+- Don’t mention any tools.
+
+
+--------------------------------------
+
+# My Solution and thought process
+
+
+### Diagram of the Conceptual Pipeline
+![Conceptual Data Pipeline](Beejan_casestuddy.drawio.png)
+Please refer to the diagram above for the conceptual data pipeline.
+
+- Click [here](Beejan_casestuddy.drawio.png) to view the image in full size.
+- Click [here](./mfon_beejan_assignment.pdf) to view the detailed explanation in PDF format.
+- Click [here](./Beejan%20Technologies%20Business%20Scenario.pdf) to view the detailed explanation in Word format.
