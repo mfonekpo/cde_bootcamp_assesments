@@ -46,6 +46,6 @@ with).
 ![Conceptual Data Pipeline](Beejan_casestuddy.drawio.png)
 Please refer to the diagram above for the conceptual data pipeline.
 
-- Click [here](Beejan_casestuddy.drawio.png) to view the image in full size.
+- Click [here](./beejan_case_study.drawio.png) to view the image in full size.
 - Click [here](./mfon_beejan_assignment.pdf) to view the detailed explanation in PDF format.
 - Click [here](./Beejan%20Technologies%20Business%20Scenario.pdf) to view the detailed explanation in Word format.
