@@ -48,5 +48,77 @@ And the group with this [Group Submission Link](https://docs.google.com/forms/d/
 
 I wish you all Goodluck.
 
+---------------
 
+# SOLUTION
+
+This section is dedicated to the solution of the assignment.
+The solutions are subdivided into question numbers.
+
+## Question 1 - ETL Process
+To run this ETL process, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Navigate to the `assignment_2/question1` directory.
+3. Run ```chmod +x etl.sh``` to make the bash script executable on your terminal.
+4. Run ```./etl.sh``` to run the bash script.
+5. The script will download the CSV file, transform it, and load it into the `Gold` directory as per requirement.
+
+**Here is a sample log once the code is run:**
+```log
+ETL Process initialized...
+Extraction Phase Started
+Creating download directory 'raw'
+Downloading datafile from url:
+Download complete.
+Extraction phase completed. survey.csv data file saved to directory
+File exists
+Begin Transformation Phase
+Tranformation Phase Started
+columns renamed from 'Variable_code' to 'variable_code'
+File exists
+Begin Loading Phase
+Loading phase Started
+File exists
+ETL Process completed.
+```
+
+--------
+
+## Question 2 - Cron Job
+To schedule the script to run daily at 12:00 AM, follow these steps:
+
+1. Open the terminal.
+2. Type `crontab -e` to edit the crontab file.
+3. Add the following line to the crontab file:
+```bash
+0 0 * * * /bin/bash /path/to/etl.sh
+```
+4. Save and exit the crontab file.
+5. The script will now run daily at 12:00 AM as per requirement.
+
+### NOTE:
+- In scenarios you are asked to ```select-editor``` ensure you select the option >> ```  1. /bin/nano        <---- easiest```. This makes it easier to run the Cron job.
+- Use ```sudo cat /var/log/syslog | grep CRON``` to check if the cron job is running as per requirement.
+
+**Here is a sample log once the cron job is scheduled:**
+```log
+CRON[262911]: (root) CMD (cd / && run-parts --report /etc/cron.hourly)
+```
+--------
+
+## Question 3 - Move CSV and JSON files
+To move all CSV and JSON files from one folder to another folder named `json_and_CSV`, follow these steps:
+
+1. Open the terminal.
+2. Ensure you type ```chmod +x filemove.sh``` to make the bash script executable.
+3. Type ```./filemove.sh``` to run the bash script.
+4. The files will now be moved to the `json_and_CSV` folder as per requirement.
+
+**Here is a sample log once the code is run:**
+```log
+File move process initialized...
+moving file to designated location...
+File move process completed.
+```
 
