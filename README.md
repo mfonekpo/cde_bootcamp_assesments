@@ -7,3 +7,4 @@ I enrolled for CDE Bootcamp and this repo documents my progress throughout the c
 ## Assesments/Projects Done
 
 1. **Bejaan Technologies Business Scenario:**  [First_Assignment](./assignment_1)
+2. **Linux and Git Individual Assignment:** [second_assignment](./assignment_2/)
