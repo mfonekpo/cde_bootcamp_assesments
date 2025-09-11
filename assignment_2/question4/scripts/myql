@@ -1,0 +1,101 @@
+select * from public.orders;
+
+-- Alter table for orders
+ALTER TABLE public.orders
+    ALTER COLUMN id TYPE INTEGER USING id::INTEGER,
+    ALTER COLUMN account_id TYPE INTEGER USING account_id::INTEGER,
+    ALTER COLUMN occurred_at TYPE TIMESTAMP USING occurred_at::TIMESTAMP,
+    ALTER COLUMN standard_qty TYPE INTEGER USING standard_qty::INTEGER,
+    ALTER COLUMN gloss_qty TYPE INTEGER USING gloss_qty::INTEGER,
+    ALTER COLUMN poster_qty TYPE INTEGER USING poster_qty::INTEGER,
+    ALTER COLUMN total TYPE INTEGER USING total::INTEGER,
+    ALTER COLUMN standard_amt_usd TYPE NUMERIC(10,2) USING standard_amt_usd::NUMERIC,
+    ALTER COLUMN gloss_amt_usd TYPE NUMERIC(10,2) USING gloss_amt_usd::NUMERIC,
+    ALTER COLUMN poster_amt_usd TYPE NUMERIC(10,2) USING poster_amt_usd::NUMERIC,
+    ALTER COLUMN total_amt_usd TYPE NUMERIC(10,2) USING total_amt_usd::NUMERIC;
+
+-- Alter table for accounts
+ALTER TABLE accounts
+    ALTER COLUMN id TYPE INT USING id::integer,
+    ALTER COLUMN name TYPE TEXT,
+    ALTER COLUMN website TYPE TEXT,
+    ALTER COLUMN lat TYPE DECIMAL(9,6) USING lat::decimal,
+    ALTER COLUMN long TYPE DECIMAL(9,6) USING long::decimal,
+    ALTER COLUMN primary_poc TYPE TEXT,
+    ALTER COLUMN sales_rep_id TYPE INT USING sales_rep_id::integer;
+
+-- Add primary key on id
+ALTER TABLE accounts
+    ADD CONSTRAINT accounts_pkey PRIMARY KEY (id);
+
+-- Add foreign key to sales_reps
+ALTER TABLE accounts
+    ADD CONSTRAINT fk_accounts_salesrep
+    FOREIGN KEY (sales_rep_id) REFERENCES sales_reps(id);
+
+-- Alter command for region table;
+
+ALTER TABLE region
+    ALTER COLUMN id TYPE INT USING id::integer,
+    ALTER COLUMN name TYPE TEXT;
+
+ALTER TABLE region
+    ADD CONSTRAINT region_pkey PRIMARY KEY (id);
+
+
+-- Alter command for sales_reps table
+
+ALTER TABLE sales_reps
+    ALTER COLUMN id TYPE INT USING id::integer,
+    ALTER COLUMN name TYPE TEXT,
+    ALTER COLUMN region_id TYPE INT USING region_id::integer;
+
+ALTER TABLE sales_reps
+    ADD CONSTRAINT sales_reps_pkey PRIMARY KEY (id);
+
+ALTER TABLE sales_reps
+    ADD CONSTRAINT fk_salesreps_region
+    FOREIGN KEY (region_id) REFERENCES region(id);
+
+
+
+--first scenario
+select id, account_id
+from public.orders
+where gloss_qty > 4000 or poster_qty > 4000;
+
+--second scenario
+select * 
+from public.orders
+where standard_qty = 0 
+	and (gloss_qty > 1000 or poster_qty > 1000);
+
+--Third scenario
+SELECT name, primary_poc
+FROM public.accounts
+WHERE (name LIKE 'C%' OR name LIKE 'W%')
+  AND primary_poc ILIKE '%ana%'
+  AND primary_poc NOT ILIKE '%eana%';
+
+--Fourth scenario
+select *
+from public.sales_reps;
+
+select *
+from public.accounts;
+
+-- Performing join
+select
+	r.name as region_name,
+	sr.name as sales_rep_name,
+	a.name as account_name
+from region r
+join sales_reps sr
+	on r.id = sr.region_id
+join accounts a
+	on sr.id = a.sales_rep_id
+order by a.name ASC;
+
+	
+
+
