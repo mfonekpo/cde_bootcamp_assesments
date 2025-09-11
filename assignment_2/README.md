@@ -126,3 +126,6 @@ moving file to designated location...
 File move process completed.
 ```
 
+----------------
+## Question 4 - Architecture Diagram
+![Architecture Diagram](./question4/architectural%20diagram.drawio.png)
