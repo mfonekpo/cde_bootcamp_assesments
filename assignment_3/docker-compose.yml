@@ -1,0 +1,6 @@
+services:
+  db:
+    build: .
+    container_name: postgres_etl
+    env_file:
+      - .env
