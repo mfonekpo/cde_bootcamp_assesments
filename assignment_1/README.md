@@ -42,6 +42,16 @@ with).
 # My Solution and thought process
 
 
+# Source Identification
+
+| Sources | File Format | Frequency |
+|----------|----------|----------|
+| Social Media   | JSON   | Batch or Streaming: depends on deliverables   |
+| Call Center Log files   | CSV, JSON, XML   | Batch   |
+| SMS               |                   |
+| Website Forms |           |
+
+
 ### Diagram of the Conceptual Pipeline
 ![Conceptual Data Pipeline](./beejan_case_study.drawio.png)
 Please refer to the diagram above for the conceptual data pipeline architecture.
