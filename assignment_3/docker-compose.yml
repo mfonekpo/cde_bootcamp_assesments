@@ -1,6 +1,26 @@
 services:
   db:
-    build: .
-    container_name: postgres_etl
+    image: postgres:16.4
+    container_name: postgres_db
     env_file:
       - .env
+    networks:
+      - etl_network
+    ports:
+      - "4500:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4:8.7
+    container_name: pgadmin
+    env_file:
+      - .env
+    networks:
+      - etl_network
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+      
+networks:
+  etl_network:

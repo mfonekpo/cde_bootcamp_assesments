@@ -14,3 +14,5 @@
     - All code (ETL scripts, Dockerfiles, bash script)
     - A detailed README file with step-by-step instructions on running the pipeline.
 - Submission deadline: before next class on Wednesday.
+
+
