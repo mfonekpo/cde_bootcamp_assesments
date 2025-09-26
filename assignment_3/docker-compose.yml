@@ -21,6 +21,17 @@ services:
   #   depends_on:
   #     - db
 
+  etl_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: etl
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - Transformed_data:/app/transformed_data
+
       
 networks:
   etl_network:

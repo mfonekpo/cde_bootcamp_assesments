@@ -3,9 +3,18 @@ import numpy as np
 from pathlib import Path
 
 
-def rename_col(data: str):
+def rename_col(data: str) -> pd.DataFrame:
     df = pd.read_csv(data)
-    df.rename(columns={"Variable_code": "variable_code"}, inplace=True)
+    df.rename(
+        columns={
+            "Variable_code": "variable_code",
+            "Value": "survey_value",
+            "Year": "survey_year",
+            "Units": "units"
+        },
+        inplace=True
+    )
+    return df
 
 
 def save_selected_columns(
@@ -13,7 +22,7 @@ def save_selected_columns(
         output_path: str = "Transformed"
     ):
 
-    df = pd.read_csv(data)
+    df = rename_col(data)
     output_dir = Path(output_path)
     output_dir.mkdir(parents=True, exist_ok=True)
     file_path = output_dir / "2023_year_finance.csv"
@@ -24,7 +33,7 @@ def save_selected_columns(
 
 
 def transform_data():
-    data_path = Path("data/survey_data.csv")
+    data_path = Path("./data/survey_data.csv")
     rename_col(data_path)
     save_selected_columns(data_path)
 
