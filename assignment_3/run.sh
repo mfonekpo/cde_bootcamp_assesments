@@ -15,5 +15,8 @@ fi
 # Export as an environment variable so docker-compose can use it
 export NETWORK_NAME
 
-# Run docker-compose with this network
-docker compose up -d --build
+echo "🚀 Starting ETL pipeline..."
+docker compose up --build --abort-on-container-exit
+
+echo "🧹 Cleaning up..."
+docker compose down

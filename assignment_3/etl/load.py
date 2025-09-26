@@ -6,10 +6,22 @@ import pandas as pd
 load_dotenv()
 
 def load_data_to_db(data: pd.DataFrame):
+    """
+    Loads the given DataFrame data into a PostgreSQL database table named 'survey'.
+
+    Args:
+        data (pd.DataFrame): The DataFrame data to be loaded into the database.
+
+    Returns:
+        None
+
+    Raises:
+        psycopg2.Error: If there is an error connecting to the database.
+    """
     conn_params = {"dbname":os.getenv("POSTGRES_DB"),
     "user":os.getenv("POSTGRES_USER"),
     "password":os.getenv("POSTGRES_PASSWORD"),
-    "host":"localhost",
+    "host":"db",
     "port":"5432"}
 
     try:
@@ -21,7 +33,7 @@ def load_data_to_db(data: pd.DataFrame):
                     CREATE TABLE IF NOT EXISTS survey (
                         id SERIAL PRIMARY KEY,
                         survey_year INTEGER,
-                        survey_value INTEGER,
+                        survey_value VARCHAR,
                         units VARCHAR(100),
                         variable_code VARCHAR(20)
                     );
@@ -30,12 +42,11 @@ def load_data_to_db(data: pd.DataFrame):
 
             # insert data into table
             with conn.cursor() as cur:
-
+                # df = pd.read_csv(data)
                 rows = data.to_records(index=False).tolist()
                 insert_query = """
                     INSERT INTO survey (survey_year, survey_value, units, variable_code)
                     VALUES (%s, %s, %s, %s)
-                    ON CONFLICT (survey_year, variable_code) DO NOTHING;
                 """
                 cur.executemany(insert_query, rows)
             print("Data inserted successfully.")
