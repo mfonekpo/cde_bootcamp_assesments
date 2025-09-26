@@ -8,20 +8,16 @@ services:
       - etl_network
     ports:
       - "4500:5432"
-
-  # pgadmin:
-  #   image: dpage/pgadmin4:8.7
-  #   container_name: pgadmin
-  #   env_file:
-  #     - .env
-  #   networks:
-  #     - etl_network
-  #   ports:
-  #     - "8080:80"
-  #   depends_on:
-  #     - db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      retries: 5
+      timeout: 5s
 
   etl_service:
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     build:
       context: .
       dockerfile: Dockerfile
@@ -30,8 +26,14 @@ services:
       - .env
     volumes:
       - ./data:/app/data
-      - Transformed_data:/app/transformed_data
+      - ./Transformed:/app/Transformed
+      - ./etl:/app/etl
+    depends_on:
+      db:
+        condition: service_healthy
 
-      
+    networks:
+      - etl_network
+
 networks:
   etl_network:

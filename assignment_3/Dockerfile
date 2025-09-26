@@ -7,4 +7,4 @@ RUN python3 -m pip install -r requirements.txt
 
 
 
-CMD ["python", "main.py"]
+CMD ["python", "./etl/main.py"]
