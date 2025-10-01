@@ -9,3 +9,4 @@ I enrolled for CDE Bootcamp and this repo documents my progress throughout the c
 1. **Bejaan Technologies Business Scenario:**  [First_Assignment](./assignment_1)
 2. **Linux and Git Individual Assignment:** [second_assignment](./assignment_2/)
 3. **Python ETL Pipeline with Dockerized Database:** [third assignment](./assignment_3/)
+4. **Docker Assignment 2:** [fourth assignment](./assignment_4/)
